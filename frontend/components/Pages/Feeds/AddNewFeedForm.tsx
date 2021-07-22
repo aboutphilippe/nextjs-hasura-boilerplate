@@ -11,7 +11,7 @@ import {
   Textarea,
   Input,
   Switch,
-  useBoolean
+  useBoolean,
 } from "@chakra-ui/react";
 import AccessDeniedIndicator from "components/AccessDeniedIndicator";
 import { useInsertFeedMutation } from "generated-graphql";
@@ -26,10 +26,8 @@ const AddNewFeedForm = () => {
   const [owned, setOwned] = useBoolean();
   const [body, setBody] = useState("");
   const [session] = useSession();
-  const [
-    insertFeed,
-    { loading: insertFeedFetching, error: insertFeedError },
-  ] = useInsertFeedMutation();
+  const [insertFeed, { loading: insertFeedFetching, error: insertFeedError }] =
+    useInsertFeedMutation();
 
   if (!session) {
     return (
@@ -44,6 +42,7 @@ const AddNewFeedForm = () => {
         title,
         url,
         bdgId,
+        image,
         owned,
         body,
       },
@@ -129,12 +128,7 @@ const AddNewFeedForm = () => {
           <FormLabel htmlFor="owned" mb="0">
             Do you own this game?
           </FormLabel>
-          <Switch
-            id="owned"
-            onChange={
-              setOwned.toggle
-            }
-          />
+          <Switch id="owned" onChange={setOwned.toggle} />
           <FormControl>
             <Button
               loadingText="Posting..."
