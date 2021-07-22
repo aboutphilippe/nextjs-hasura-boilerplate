@@ -5,7 +5,8 @@
   "author": "Nirmalya Ghosh <nirmalya.email@gmail.com>",
   "scripts": {
     "bootstrap": "node scripts/generate-keys.ts && yarn install && cd frontend && yarn install",
-    "dev": "docker-compose up -d",
+    "dev": "docker compose up -d",
+    "down": "docker compose down",
     "release": "release-it"
   },
   "devDependencies": {
