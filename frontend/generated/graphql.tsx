@@ -33,6 +33,19 @@ export type Scalars = {
   uuid: any;
 };
 
+/** Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'. */
+export type Boolean_Comparison_Exp = {
+  _eq?: Maybe<Scalars["Boolean"]>;
+  _gt?: Maybe<Scalars["Boolean"]>;
+  _gte?: Maybe<Scalars["Boolean"]>;
+  _in?: Maybe<Array<Scalars["Boolean"]>>;
+  _is_null?: Maybe<Scalars["Boolean"]>;
+  _lt?: Maybe<Scalars["Boolean"]>;
+  _lte?: Maybe<Scalars["Boolean"]>;
+  _neq?: Maybe<Scalars["Boolean"]>;
+  _nin?: Maybe<Array<Scalars["Boolean"]>>;
+};
+
 /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
 export type Int_Comparison_Exp = {
   _eq?: Maybe<Scalars["Int"]>;
@@ -296,10 +309,15 @@ export type Feeds = {
   /** An object relationship */
   author?: Maybe<Users>;
   author_id: Scalars["uuid"];
+  bdgId?: Maybe<Scalars["String"]>;
   body: Scalars["String"];
   created_at: Scalars["timestamptz"];
   id: Scalars["uuid"];
+  image?: Maybe<Scalars["String"]>;
+  owned?: Maybe<Scalars["Boolean"]>;
+  title?: Maybe<Scalars["String"]>;
   updated_at: Scalars["timestamptz"];
+  url?: Maybe<Scalars["String"]>;
 };
 
 /** aggregated selection of "feeds" */
@@ -344,10 +362,15 @@ export type Feeds_Bool_Exp = {
   _or?: Maybe<Array<Feeds_Bool_Exp>>;
   author?: Maybe<Users_Bool_Exp>;
   author_id?: Maybe<Uuid_Comparison_Exp>;
+  bdgId?: Maybe<String_Comparison_Exp>;
   body?: Maybe<String_Comparison_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
   id?: Maybe<Uuid_Comparison_Exp>;
+  image?: Maybe<String_Comparison_Exp>;
+  owned?: Maybe<Boolean_Comparison_Exp>;
+  title?: Maybe<String_Comparison_Exp>;
   updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+  url?: Maybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "feeds" */
@@ -360,48 +383,69 @@ export enum Feeds_Constraint {
 export type Feeds_Insert_Input = {
   author?: Maybe<Users_Obj_Rel_Insert_Input>;
   author_id?: Maybe<Scalars["uuid"]>;
+  bdgId?: Maybe<Scalars["String"]>;
   body?: Maybe<Scalars["String"]>;
   created_at?: Maybe<Scalars["timestamptz"]>;
   id?: Maybe<Scalars["uuid"]>;
+  image?: Maybe<Scalars["String"]>;
+  owned?: Maybe<Scalars["Boolean"]>;
+  title?: Maybe<Scalars["String"]>;
   updated_at?: Maybe<Scalars["timestamptz"]>;
+  url?: Maybe<Scalars["String"]>;
 };
 
 /** aggregate max on columns */
 export type Feeds_Max_Fields = {
   __typename?: "feeds_max_fields";
   author_id?: Maybe<Scalars["uuid"]>;
+  bdgId?: Maybe<Scalars["String"]>;
   body?: Maybe<Scalars["String"]>;
   created_at?: Maybe<Scalars["timestamptz"]>;
   id?: Maybe<Scalars["uuid"]>;
+  image?: Maybe<Scalars["String"]>;
+  title?: Maybe<Scalars["String"]>;
   updated_at?: Maybe<Scalars["timestamptz"]>;
+  url?: Maybe<Scalars["String"]>;
 };
 
 /** order by max() on columns of table "feeds" */
 export type Feeds_Max_Order_By = {
   author_id?: Maybe<Order_By>;
+  bdgId?: Maybe<Order_By>;
   body?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  image?: Maybe<Order_By>;
+  title?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
+  url?: Maybe<Order_By>;
 };
 
 /** aggregate min on columns */
 export type Feeds_Min_Fields = {
   __typename?: "feeds_min_fields";
   author_id?: Maybe<Scalars["uuid"]>;
+  bdgId?: Maybe<Scalars["String"]>;
   body?: Maybe<Scalars["String"]>;
   created_at?: Maybe<Scalars["timestamptz"]>;
   id?: Maybe<Scalars["uuid"]>;
+  image?: Maybe<Scalars["String"]>;
+  title?: Maybe<Scalars["String"]>;
   updated_at?: Maybe<Scalars["timestamptz"]>;
+  url?: Maybe<Scalars["String"]>;
 };
 
 /** order by min() on columns of table "feeds" */
 export type Feeds_Min_Order_By = {
   author_id?: Maybe<Order_By>;
+  bdgId?: Maybe<Order_By>;
   body?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  image?: Maybe<Order_By>;
+  title?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
+  url?: Maybe<Order_By>;
 };
 
 /** response of any mutation on the table "feeds" */
@@ -424,10 +468,15 @@ export type Feeds_On_Conflict = {
 export type Feeds_Order_By = {
   author?: Maybe<Users_Order_By>;
   author_id?: Maybe<Order_By>;
+  bdgId?: Maybe<Order_By>;
   body?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  image?: Maybe<Order_By>;
+  owned?: Maybe<Order_By>;
+  title?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
+  url?: Maybe<Order_By>;
 };
 
 /** primary key columns input for table: feeds */
@@ -440,22 +489,37 @@ export enum Feeds_Select_Column {
   /** column name */
   AuthorId = "author_id",
   /** column name */
+  BdgId = "bdgId",
+  /** column name */
   Body = "body",
   /** column name */
   CreatedAt = "created_at",
   /** column name */
   Id = "id",
   /** column name */
+  Image = "image",
+  /** column name */
+  Owned = "owned",
+  /** column name */
+  Title = "title",
+  /** column name */
   UpdatedAt = "updated_at",
+  /** column name */
+  Url = "url",
 }
 
 /** input type for updating data in table "feeds" */
 export type Feeds_Set_Input = {
   author_id?: Maybe<Scalars["uuid"]>;
+  bdgId?: Maybe<Scalars["String"]>;
   body?: Maybe<Scalars["String"]>;
   created_at?: Maybe<Scalars["timestamptz"]>;
   id?: Maybe<Scalars["uuid"]>;
+  image?: Maybe<Scalars["String"]>;
+  owned?: Maybe<Scalars["Boolean"]>;
+  title?: Maybe<Scalars["String"]>;
   updated_at?: Maybe<Scalars["timestamptz"]>;
+  url?: Maybe<Scalars["String"]>;
 };
 
 /** update columns of table "feeds" */
@@ -463,13 +527,23 @@ export enum Feeds_Update_Column {
   /** column name */
   AuthorId = "author_id",
   /** column name */
+  BdgId = "bdgId",
+  /** column name */
   Body = "body",
   /** column name */
   CreatedAt = "created_at",
   /** column name */
   Id = "id",
   /** column name */
+  Image = "image",
+  /** column name */
+  Owned = "owned",
+  /** column name */
+  Title = "title",
+  /** column name */
   UpdatedAt = "updated_at",
+  /** column name */
+  Url = "url",
 }
 
 /** mutation root */
@@ -1604,6 +1678,11 @@ export enum Verification_Requests_Update_Column {
 
 export type InsertFeedMutationVariables = Exact<{
   author_id: Scalars["uuid"];
+  title?: Maybe<Scalars["String"]>;
+  url?: Maybe<Scalars["String"]>;
+  bdgId?: Maybe<Scalars["String"]>;
+  image?: Maybe<Scalars["String"]>;
+  owned?: Maybe<Scalars["Boolean"]>;
   body?: Maybe<Scalars["String"]>;
 }>;
 
@@ -1636,7 +1715,17 @@ export type FetchFeedsSubscriptionVariables = Exact<{ [key: string]: never }>;
 
 export type FetchFeedsSubscription = { __typename?: "subscription_root" } & {
   feeds: Array<
-    { __typename?: "feeds" } & Pick<Feeds, "id" | "created_at" | "body"> & {
+    { __typename?: "feeds" } & Pick<
+      Feeds,
+      | "id"
+      | "created_at"
+      | "title"
+      | "url"
+      | "bdgId"
+      | "image"
+      | "owned"
+      | "body"
+    > & {
         author?: Maybe<
           { __typename?: "users" } & Pick<Users, "id" | "name" | "image">
         >;
@@ -1645,8 +1734,26 @@ export type FetchFeedsSubscription = { __typename?: "subscription_root" } & {
 };
 
 export const InsertFeedDocument = gql`
-  mutation insertFeed($author_id: uuid!, $body: String) {
-    insert_feeds_one(object: { author_id: $author_id, body: $body }) {
+  mutation insertFeed(
+    $author_id: uuid!
+    $title: String
+    $url: String
+    $bdgId: String
+    $image: String
+    $owned: Boolean
+    $body: String
+  ) {
+    insert_feeds_one(
+      object: {
+        author_id: $author_id
+        title: $title
+        url: $url
+        bdgId: $bdgId
+        image: $image
+        owned: $owned
+        body: $body
+      }
+    ) {
       id
     }
   }
@@ -1720,6 +1827,11 @@ export function withInsertFeed<
  * const [insertFeedMutation, { data, loading, error }] = useInsertFeedMutation({
  *   variables: {
  *      author_id: // value for 'author_id'
+ *      title: // value for 'title'
+ *      url: // value for 'url'
+ *      bdgId: // value for 'bdgId'
+ *      image: // value for 'image'
+ *      owned: // value for 'owned'
  *      body: // value for 'body'
  *   },
  * });
@@ -1956,6 +2068,11 @@ export const FetchFeedsDocument = gql`
     feeds(order_by: { created_at: desc }) {
       id
       created_at
+      title
+      url
+      bdgId
+      image
+      owned
       body
       author {
         id
@@ -2170,9 +2287,10 @@ export type DirectiveResolverFn<
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
+  Boolean_comparison_exp: Boolean_Comparison_Exp;
+  Boolean: ResolverTypeWrapper<Scalars["Boolean"]>;
   Int_comparison_exp: Int_Comparison_Exp;
   Int: ResolverTypeWrapper<Scalars["Int"]>;
-  Boolean: ResolverTypeWrapper<Scalars["Boolean"]>;
   String_comparison_exp: String_Comparison_Exp;
   String: ResolverTypeWrapper<Scalars["String"]>;
   accounts: ResolverTypeWrapper<Accounts>;
@@ -2277,9 +2395,10 @@ export type ResolversTypes = {
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
+  Boolean_comparison_exp: Boolean_Comparison_Exp;
+  Boolean: Scalars["Boolean"];
   Int_comparison_exp: Int_Comparison_Exp;
   Int: Scalars["Int"];
-  Boolean: Scalars["Boolean"];
   String_comparison_exp: String_Comparison_Exp;
   String: Scalars["String"];
   accounts: Accounts;
@@ -2575,10 +2694,15 @@ export type FeedsResolvers<
 > = {
   author?: Resolver<Maybe<ResolversTypes["users"]>, ParentType, ContextType>;
   author_id?: Resolver<ResolversTypes["uuid"], ParentType, ContextType>;
+  bdgId?: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
   body?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
   created_at?: Resolver<ResolversTypes["timestamptz"], ParentType, ContextType>;
   id?: Resolver<ResolversTypes["uuid"], ParentType, ContextType>;
+  image?: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
+  owned?: Resolver<Maybe<ResolversTypes["Boolean"]>, ParentType, ContextType>;
+  title?: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
   updated_at?: Resolver<ResolversTypes["timestamptz"], ParentType, ContextType>;
+  url?: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -2623,6 +2747,7 @@ export type Feeds_Max_FieldsResolvers<
   ParentType extends ResolversParentTypes["feeds_max_fields"] = ResolversParentTypes["feeds_max_fields"]
 > = {
   author_id?: Resolver<Maybe<ResolversTypes["uuid"]>, ParentType, ContextType>;
+  bdgId?: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
   body?: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
   created_at?: Resolver<
     Maybe<ResolversTypes["timestamptz"]>,
@@ -2630,11 +2755,14 @@ export type Feeds_Max_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes["uuid"]>, ParentType, ContextType>;
+  image?: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
+  title?: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
   updated_at?: Resolver<
     Maybe<ResolversTypes["timestamptz"]>,
     ParentType,
     ContextType
   >;
+  url?: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -2643,6 +2771,7 @@ export type Feeds_Min_FieldsResolvers<
   ParentType extends ResolversParentTypes["feeds_min_fields"] = ResolversParentTypes["feeds_min_fields"]
 > = {
   author_id?: Resolver<Maybe<ResolversTypes["uuid"]>, ParentType, ContextType>;
+  bdgId?: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
   body?: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
   created_at?: Resolver<
     Maybe<ResolversTypes["timestamptz"]>,
@@ -2650,11 +2779,14 @@ export type Feeds_Min_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes["uuid"]>, ParentType, ContextType>;
+  image?: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
+  title?: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
   updated_at?: Resolver<
     Maybe<ResolversTypes["timestamptz"]>,
     ParentType,
     ContextType
   >;
+  url?: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 

@@ -22,6 +22,11 @@ insert_permissions:
 select_permissions:
 - permission:
     columns:
+    - title
+    - url
+    - bdgId
+    - image
+    - owned
     - body
     - created_at
     - updated_at

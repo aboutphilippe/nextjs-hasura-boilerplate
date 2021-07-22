@@ -2,6 +2,11 @@ subscription fetchFeeds {
   feeds(order_by: { created_at: desc }) {
     id
     created_at
+    title
+    url
+    bdgId
+    image
+    owned
     body
     author {
       id
